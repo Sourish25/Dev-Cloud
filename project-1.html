@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - SkillMatch</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="1.png" alt="SkillMatch Logo" class="logo" id="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Explore</a>
+            <a href="post.html" class="nav-link">Post a Request</a>
+            <a href="messages.html" class="nav-link">Messages</a>
+            <a href="profile.html" class="nav-link">Profile</a>
+            <button class="btn" id="theme-toggle">Dark Mode</button>
+        </div>
+    </nav>
+
+    <div class="project-detail-layout">
+        
+        <main class="project-main-content">
+            <h1 class="project-title">Need help with React component logic</h1>
+            
+            <div class="project-section">
+                <h2>Project Goal</h2>
+                <p>The main goal is to identify and fix a state management bug in an existing modal component to ensure it opens and closes reliably.</p>
+            </div>
+
+            <div class="project-section">
+                <h2>Full Description</h2>
+                <p>I have a modal component that isn't managing its "open" / "closed" state correctly. It's built with React and uses the `useState` hook. When the parent component passes a new prop, the modal doesn't re-render correctly.</p>
+                <p>I'm looking for someone with strong React experience to join a 1-hour pair-programming session to debug this with me. This is a great opportunity for me to learn.</p>
+            </div>
+
+            <div class="project-section">
+                <h2>Skills Required</h2>
+                <div class="card-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">State Management</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Debugging</span>
+                </div>
+            </div>
+        </main>
+
+        <aside class="project-sidebar">
+            <div class="project-author-card card">
+                <img src="https://i.pravatar.cc/150?img=1" alt="Avatar" class="avatar">
+                <strong>Alice Smith</strong>
+                <span>Frontend Developer</span>
+                <p class="author-bio">"Hi! I'm a frontend dev building a personal project. I love learning and collaborating."</p>
+                <a href="messages.html" class="btn btn-primary btn-fullwidth">Send Request</a>
+            </div>
+            
+            <div class="project-meta-card card">
+                <h3>Project Info</h3>
+                <ul class="project-meta-list">
+                    <li><strong>Budget:</strong> Rs 1000 (Fixed)</li>
+                    <li><strong>Posted:</strong> 31 Oct, 2025</li>
+                    <li><strong>Project ID:</strong> #001</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+</body>
+</html>

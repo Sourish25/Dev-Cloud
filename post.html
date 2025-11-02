@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch - Post a Request</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="nav-container">
+        <a href="index.html">
+            <img src="1.png" alt="SkillMatch Logo" class="logo" id="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Explore</a>
+            <a href="post.html" class="nav-link">Post a Request</a>
+            <a href="messages.html" class="nav-link">Messages</a>
+            <a href="profile.html" class="nav-link">Profile</a>
+            <button class="btn" id="theme-toggle">Dark Mode</button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <form class="form-container" onsubmit="event.preventDefault();">
+            <h1>Post a Skill or Collaboration Request</h1>
+            
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-input" id="title" type="text" placeholder="e.g., 'Need help with Python script'">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-textarea" id="description" placeholder="Describe the project, what you need help with, and the expected outcomes."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="skills">Skills Required</label>
+                <input class="form-input" id="skills" type="text" placeholder="e.g., 'React, Figma, Node.js' (comma-separated)">
+            </div>
+
+            <div class="form-group">
+                <label for="pay">Pay & Benefits</label>
+                <input class="form-input" id="pay" type="text" placeholder="e.g., '$100 Fixed', '$50/hr', 'Rev-share'">
+            </div>
+
+            <button class="btn btn-primary" type="submit">Post Request</button>
+        </form>
+    </div>
+
+</body>
+</html>
