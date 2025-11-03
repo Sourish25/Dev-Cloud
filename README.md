@@ -29,13 +29,14 @@ Our project, **Dev Cloud**, directly solves the chosen problem statement by crea
 
 ## ✨ Core Features
 
-* **Browse Listings:** A home page with a grid of all available micro-jobs and projects.
-* **Project Detail Pages:** Users can click on any project to see a detailed description, project goals, required skills, and budget.
-* **Post a Request:** A dedicated form page (`post.html`) for users to submit their own projects.
-* **User Profiles:** A `profile.html` page to display user information, collaboration history, and ratings.
-* **Connect & Message:** A "Send Request" button on project pages that links to the messaging system (`messages.html`).
-* **Light/Dark Mode:** A theme toggle button in the navbar for user preference.
-
+* **Animated Login:** A dynamic login screen with a rising/setting sun and moon.
+* **Persistent Dark Mode:** A core feature! The theme is saved in `localStorage`, so it stays the same across all pages.
+* **Project Dashboard:** A clean, card-based dashboard to browse all projects.
+* **Detailed Project Pages:** Each project has its own page with a full description, budget, and author bio.
+* **Post & Manage:** Users can post new projects via a form and view their project history on their profile.
+* **Interactive Profiles:** User profiles with social links, ratings, and a tabbed project history.
+* **Static & Fast:** Built with pure HTML, CSS, and vanilla JS. No build steps needed—just open `index.html`.
+  
 ## 🛠️ Tech Stack
 
 This project is built from the ground up using only:
