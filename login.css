@@ -1,0 +1,243 @@
+/* login.css - Styles for the new homepage */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    transition: background-color 1.5s ease;
+    overflow: hidden; /* Stops scrolling */
+    position: relative;
+    height: 100vh;
+}
+
+/* ---------------------------------
+ * THEME COLORS & ANIMATIONS
+ * --------------------------------- */
+
+/* DARK MODE (Default) */
+body.dark-mode {
+    background-color: #0c0a1a; /* Deep night sky */
+}
+body.dark-mode .bg-layer-1 { background-color: rgba(22, 28, 60, 0.7); }
+body.dark-mode .bg-layer-2 { background-color: rgba(30, 38, 80, 0.5); }
+body.dark-mode .bg-layer-3 { background-color: rgba(40, 50, 100, 0.3); }
+/* No longer need #stars opacity here */
+body.dark-mode .login-form { background: rgba(0, 0, 10, 0.4); }
+body.dark-mode .quote, body.dark-mode label { color: #c0c0ff; }
+body.dark-mode input { border-color: #334155; background: #1E293B; color: #E2E8F0; }
+
+/* --- MOON IS VISIBLE (TOP-LEFT), SUN IS HIDDEN (BOTTOM-RIGHT) --- */
+body.dark-mode .moon { 
+    transform: translate(0, 0) rotate(0deg); /* Visible position */
+    opacity: 1;
+} 
+body.dark-mode .sun { 
+    transform: translate(150vw, 50vh) rotate(180deg); /* Hidden position */
+    opacity: 0;
+} 
+
+
+/* LIGHT MODE */
+body.light-mode {
+    background-color: #87CEEB; /* Bright sky blue */
+}
+body.light-mode .bg-layer-1 { background-color: rgba(255, 255, 255, 0.7); }
+body.light-mode .bg-layer-2 { background-color: rgba(255, 255, 255, 0.5); }
+body.light-mode .bg-layer-3 { background-color: rgba(255, 255, 255, 0.3); }
+/* No longer need #stars opacity here */
+body.light-mode .login-form { background: rgba(255, 255, 255, 0.4); }
+body.light-mode .quote, body.light-mode label { color: #1e3a8a; }
+body.light-mode input { border-color: #c0c0ff; background: #FFFFFF; color: #121212; }
+
+/* --- SUN IS VISIBLE (TOP-LEFT), MOON IS HIDDEN (BOTTOM-RIGHT) --- */
+body.light-mode .moon { 
+    transform: translate(150vw, 50vh) rotate(180deg); /* Hidden position */
+    opacity: 0;
+} 
+body.light-mode .sun { 
+    transform: translate(0, 0) rotate(0deg); /* Visible position */
+    opacity: 1;
+} 
+
+
+/* ---------------------------------
+ * BACKGROUND ELEMENTS
+ * --------------------------------- */
+.bg-layer {
+    position: absolute;
+    border-radius: 50%;
+    transition: background-color 1.5s ease;
+    z-index: 1; /* Keep layers behind */
+}
+.bg-layer-1 {
+    width: 150vmax; height: 150vmax;
+    top: -50%; left: -50%;
+}
+.bg-layer-2 {
+    width: 120vmax; height: 120vmax;
+    top: -30%; left: -20%;
+}
+.bg-layer-3 {
+    width: 100vmax; height: 100vmax;
+    top: -10%; left: 10%;
+}
+
+/* Stars */
+#stars {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 2; /* Still behind login, above layers */
+    transition: opacity 1.5s ease; /* This line is no longer strictly needed but fine */
+}
+.star {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 50%;
+    animation: twinkle 5s infinite;
+    
+    /* --- NEW ANIMATION PROPERTIES --- */
+    transform: translateY(0); /* Base position (at night) */
+    opacity: 1; /* Base opacity (at night) */
+    /* Add transition for falling (transform) and fading (opacity) */
+    transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
+                opacity 1.5s ease-out;
+}
+
+/* --- NEW RULE FOR FALLING STARS --- */
+body.light-mode .star {
+    transform: translateY(100vh); /* Fall down 100% of the screen height */
+    opacity: 0; /* Fade out as they fall */
+}
+
+/* Sun and Moon */
+.celestial-body {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    z-index: 3; /* BEHIND the login form (which is z-index: 20) */
+    
+    /* THIS IS THE VISIBLE "RESTING" POSITION: TOP-LEFT */
+    top: 5vh;   /* 5% from top */
+    left: 5vw;  /* 5% from left */
+    
+    /* This is the satisfying animation! */
+    /* The cubic-bezier makes the "arc" motion */
+    transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
+                opacity 1s ease-out;
+}
+.sun {
+    background: #FFD700;
+    box-shadow: 0 0 50px #FFD700, 0 0 100px #FFD700;
+}
+.moon {
+    background: #E0E0E0;
+    box-shadow: 0 0 30px #E0E0E0, 0 0 60px #E0E0E0, inset -20px -10px 0 #c0c0c0;
+}
+
+/* ---------------------------------
+ * LOGIN FORM
+ * --------------------------------- */
+.login-container {
+    position: relative;
+    /* z-index: 20; set in HTML */
+    display: flex;
+    justify-content: center;
+    /* --- THIS IS THE FIX --- */
+    align-items: center; 
+    height: 100vh;
+}
+.login-form {
+    width: 400px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    /* This gives the cool "frosted glass" effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: background-color 1.5s ease;
+    text-align: center;
+}
+.logo {
+    height: 60px; /* Bigger logo */
+    margin-bottom: 1.5rem;
+}
+
+.quote {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    min-height: 40px; /* Prevents layout shift */
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid;
+    transition: all 0.3s ease;
+}
+input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+/* ---------------------------------
+ * THEME TOGGLE BUTTON
+ * --------------------------------- */
+.theme-toggle {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100; /* Always on top of everything */
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid #c0c0ff;
+    background: rgba(0, 0, 0, 0.3);
+    color: #E2E8F0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+body.light-mode .theme-toggle {
+    background: rgba(255, 255, 255, 0.5);
+    color: #1e3a8a;
+    border-color: #1e3a8a;
+}

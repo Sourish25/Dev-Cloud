@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Cloud - Login</title>
+    <link rel="stylesheet" href="login.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode"> <div class="bg-layer layer-1"></div>
+    <div class="bg-layer layer-2"></div>
+    <div class="bg-layer layer-3"></div>
+
+    <div id="stars"></div>
+
+    <div class="celestial-body sun"></div>
+    <div class="celestial-body moon"></div>
+
+    <main class="login-container" style="z-index: 20;">
+        
+        <form class="login-form" id="login-form">
+            <img src="2.png" alt="Dev Cloud Logo" class="logo" id="form-logo">
+            
+            <p class="quote">"The best way to predict the future is to create it."</p>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter any username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter any password" required>
+            </div>
+            
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+
+    </main>
+
+    <button class="theme-toggle" id="theme-toggle">
+        ☀️ Rise
+    </button>
+    
+    <script src="login.js"></script>
+</body>
+</html>
