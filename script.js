@@ -1,21 +1,17 @@
-// --- 1. GLOBAL THEME LOADER (RUNS IMMEDIATELY) ---
-// We must run this *before* the 'DOMContentLoaded' event
-// to prevent the "flash" of the wrong theme.
 
-// Get the elements we need to update
 const themeToggleButtonApp = document.getElementById('theme-toggle');
 const logoImageApp = document.getElementById('logo-img');
 
 function loadAppTheme() {
     let currentTheme = localStorage.getItem('theme');
 
-    // If no theme is saved, default to 'dark'
+ 
     if (currentTheme === null) {
         currentTheme = 'dark';
         localStorage.setItem('theme', 'dark');
     }
 
-    // Apply the theme to the body and update the UI
+
     if (currentTheme === 'dark') {
         document.body.classList.add('dark-mode');
         if (logoImageApp) logoImageApp.src = '2.png';
@@ -27,24 +23,22 @@ function loadAppTheme() {
     }
 }
 
-// Run the theme loader as soon as the script loads
+
 loadAppTheme();
 
 
-// --- 2. ALL OTHER PAGE LOGIC ---
-// Wait for the HTML document to be fully loaded for the rest
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- THEME TOGGLE (NOW SAVES THEME) ---
-    // We already got 'themeToggleButtonApp' and 'logoImageApp' from above
+  
     if (themeToggleButtonApp) {
         themeToggleButtonApp.addEventListener('click', () => {
             
-            // Toggle the class on the body
+          
             document.body.classList.toggle('dark-mode');
             
             let newTheme;
-            // Check the new state, save it, and update UI
+          
             if (document.body.classList.contains('dark-mode')) {
                 newTheme = 'dark';
                 if (logoImageApp) logoImageApp.src = '2.png';
@@ -55,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 themeToggleButtonApp.textContent = 'Dark Mode';
             }
             
-            // Save the user's choice to the "notebook"
+         
             localStorage.setItem('theme', newTheme);
         });
     }
 
 
-    // --- PROFILE TAB LOGIC (Only runs on profile.html) ---
+   
     const tabContainer = document.querySelector('.tab-container');
     
     if (tabContainer) {
@@ -85,5 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 
 });
