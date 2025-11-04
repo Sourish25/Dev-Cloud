@@ -1,8 +1,6 @@
-/* 1. GLOBAL STYLES & FONT
-  (This was our GlobalStyle.js)
-*/
+
 :root {
-  /* This is our LIGHT THEME (default) */
+ 
   --color-body: #FFFFFF;
   --color-text: #121212;
   --color-card-bg: #F5F5F5;
@@ -11,19 +9,17 @@
   --color-primary-text: #FFFFFF;
 }
 
-/* This is our DARK THEME. 
-  When the body has the .dark-mode class, these variables will be used instead.
-*/
+
 body.dark-mode {
-  --color-body: #0F172A;       /* Dark navy blue */
-  --color-text: #E2E8F0;       /* Light grey/white text */
-  --color-card-bg: #1E293B;    /* Lighter navy */
+  --color-body: #0F172A;       
+  --color-text: #E2E8F0;      
+  --color-card-bg: #1E293B;   
   --color-border: #334155;
-  --color-primary: #38BDF8;    /* Light blue */
-  --color-primary-text: #1E293B; /* Dark text on light blue button */
+  --color-primary: #38BDF8;   
+  --color-primary-text: #1E293B; 
 }
 
-/* Base body styles */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -53,11 +49,7 @@ ul {
     list-style: none;
 }
 
-/* 2. COMPONENT STYLES
-  (This is all our .js component files translated to CSS)
-*/
 
-/* Navbar.js */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -90,7 +82,7 @@ ul {
   color: var(--color-primary);
 }
 
-/* Button.js */
+
 .btn {
   background-color: var(--color-card-bg);
   color: var(--color-text);
@@ -101,7 +93,7 @@ ul {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  /* ADDED for <a> tags */
+ 
   text-decoration: none;
   display: inline-block;
 }
@@ -116,7 +108,7 @@ ul {
   border-color: var(--color-primary);
 }
 
-/* HomePage.js */
+
 .page-wrapper {
   max-width: 1200px;
   margin: 2rem auto;
@@ -153,7 +145,7 @@ ul {
   gap: 1.5rem;
 }
 
-/* ListingCard.js */
+
 .listing-card, .card {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
@@ -220,7 +212,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto; /* Pushes footer to bottom */
+  margin-top: auto;
 }
 
 .pay-info {
@@ -229,7 +221,7 @@ ul {
   color: var(--color-primary);
 }
 
-/* PostWizard.js (post.html) */
+
 .form-container {
   max-width: 800px;
   margin: 0 auto;
@@ -268,7 +260,7 @@ ul {
   resize: vertical;
 }
 
-/* ProfilePage.js (profile.html) */
+
 .profile-layout {
   display: flex;
   max-width: 1200px;
@@ -351,11 +343,11 @@ ul {
 }
 
 .tab-panel {
-  display: none; /* Hide panels by default */
+  display: none; 
 }
 
 .tab-panel.active {
-  display: block; /* Show active panel */
+  display: block;
 }
 
 .project-list li {
@@ -367,10 +359,10 @@ ul {
   border-bottom: none;
 }
 
-/* MessagesPage.js (messages.html) */
+
 .chat-layout {
   display: flex;
-  /* Full height minus navbar (approx 65px + 1px border) */
+
   height: calc(100vh - 66px); 
   max-width: 1400px;
   margin: 0 auto;
@@ -477,14 +469,11 @@ ul {
   color: var(--color-text);
 }
 
-/* -------------------------------------------------
-  NEW STYLES FOR PROJECT DETAIL PAGE (project-1.html)
-  -------------------------------------------------
-*/
+
 
 .project-detail-layout {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 2rem;
@@ -494,12 +483,12 @@ ul {
 
 .project-main-content {
   flex: 3;
-  min-width: 60%; /* Ensures it takes up space */
+  min-width: 60%; 
 }
 
 .project-sidebar {
   flex: 1;
-  min-width: 300px; /* Prevents it from getting too small */
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -529,9 +518,9 @@ ul {
   margin-bottom: 1rem;
 }
 
-/* Styles for the cards in the sidebar */
+
 .project-author-card, .project-meta-card {
-  /* Uses the .card styles from above */
+  
 }
 
 .project-author-card {
@@ -586,4 +575,5 @@ ul {
 .project-meta-list li strong {
     color: var(--color-text);
     opacity: 0.8;
+
 }
