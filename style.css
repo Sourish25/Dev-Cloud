@@ -1,25 +1,28 @@
-
+/* 1. GLOBAL STYLES & FONT */
 :root {
- 
+  /* LIGHT THEME (White BG, Black Buttons) */
   --color-body: #FFFFFF;
   --color-text: #121212;
-  --color-card-bg: #F5F5F5;
-  --color-border: #E0E0E0;
-  --color-primary: #007BFF;
+  --color-card-bg: #F8F9FA;
+  --color-border: #E5E7EB;
+  --color-primary: #000000;
   --color-primary-text: #FFFFFF;
+  --color-secondary: #F3F4F6;
+  --border-radius: 16px;
 }
 
-
+/* DARK THEME (Black BG, White Buttons) */
 body.dark-mode {
-  --color-body: #0F172A;       
-  --color-text: #E2E8F0;      
-  --color-card-bg: #1E293B;   
-  --color-border: #334155;
-  --color-primary: #38BDF8;   
-  --color-primary-text: #1E293B; 
+  --color-body: #000000;
+  --color-text: #FFFFFF;
+  --color-card-bg: #121212;
+  --color-border: #333333;
+  --color-primary: #FFFFFF;
+  --color-primary-text: #000000;
+  --color-secondary: #1E1E1E;
 }
 
-
+/* Base body styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,7 +33,7 @@ body {
   background-color: var(--color-body);
   color: var(--color-text);
   font-family: 'Inter', sans-serif;
-  transition: background-color 0.25s linear, color 0.25s linear;
+  transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.6;
 }
 
@@ -41,65 +44,95 @@ hr.divider {
 }
 
 a {
-    text-decoration: none;
-    color: var(--color-primary);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.7;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
+/* 2. COMPONENT STYLES */
 
+/* Navbar.js */
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   background-color: var(--color-body);
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(10px);
 }
 
 .logo {
-  height: 75px; 
+  height: 60px;
+  object-fit: contain;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
 }
 
 .nav-link {
   color: var(--color-text);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
 }
 
-.nav-link:hover {
-  color: var(--color-primary);
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-text);
+  transition: width 0.3s;
 }
 
+.nav-link:hover::after {
+  width: 100%;
+}
 
+/* Button.js */
 .btn {
-  background-color: var(--color-card-bg);
+  background-color: var(--color-secondary);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 16px;
+  border: 1px solid transparent;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
- 
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn:hover {
-  opacity: 0.85;
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn.btn-primary {
@@ -108,7 +141,7 @@ ul {
   border-color: var(--color-primary);
 }
 
-
+/* HomePage.js */
 .page-wrapper {
   max-width: 1200px;
   margin: 2rem auto;
@@ -121,17 +154,24 @@ ul {
 
 .search-input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 20px;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 50px;
   border: 1px solid var(--color-border);
   background-color: var(--color-card-bg);
   color: var(--color-text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 2px rgba(125, 125, 125, 0.2);
 }
 
 .search-input::placeholder {
   color: var(--color-text);
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .section-title {
@@ -145,13 +185,20 @@ ul {
   gap: 1.5rem;
 }
 
-
-.listing-card, .card {
+/* ListingCard.js */
+.listing-card,
+.card {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.listing-card:hover,
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 .listing-card {
@@ -221,7 +268,7 @@ ul {
   color: var(--color-primary);
 }
 
-
+/* PostWizard.js (post.html) */
 .form-container {
   max-width: 800px;
   margin: 0 auto;
@@ -245,14 +292,22 @@ ul {
   font-weight: 600;
 }
 
-.form-input, .form-textarea {
-  padding: 12px;
+.form-input,
+.form-textarea {
+  padding: 14px;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid var(--color-border);
-  background-color: var(--color-body);
+  background-color: var(--color-card-bg);
   color: var(--color-text);
   font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-text);
 }
 
 .form-textarea {
@@ -260,7 +315,7 @@ ul {
   resize: vertical;
 }
 
-
+/* ProfilePage.js (profile.html) */
 .profile-layout {
   display: flex;
   max-width: 1200px;
@@ -303,6 +358,7 @@ ul {
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }
+
 .profile-rating span {
   font-weight: 700;
   color: var(--color-primary);
@@ -343,7 +399,7 @@ ul {
 }
 
 .tab-panel {
-  display: none; 
+  display: none;
 }
 
 .tab-panel.active {
@@ -355,15 +411,15 @@ ul {
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--color-border);
 }
+
 .project-list li:last-child {
   border-bottom: none;
 }
 
-
+/* MessagesPage.js (messages.html) */
 .chat-layout {
   display: flex;
-
-  height: calc(100vh - 66px); 
+  height: calc(100vh - 66px);
   max-width: 1400px;
   margin: 0 auto;
   border-left: 1px solid var(--color-border);
@@ -385,19 +441,23 @@ ul {
   cursor: pointer;
   border-bottom: 1px solid var(--color-border);
 }
+
 .conversation-item:hover {
   background-color: var(--color-card-bg);
 }
+
 .conversation-item.active {
   background-color: var(--color-card-bg);
 }
+
 .conversation-item .avatar {
-    width: 45px;
-    height: 45px;
+  width: 45px;
+  height: 45px;
 }
+
 .conversation-item p {
-    font-size: 0.9rem;
-    opacity: 0.8;
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 .chat-window {
@@ -469,8 +529,7 @@ ul {
   color: var(--color-text);
 }
 
-
-
+/* Project Detail Page */
 .project-detail-layout {
   display: flex;
   flex-wrap: wrap;
@@ -483,7 +542,7 @@ ul {
 
 .project-main-content {
   flex: 3;
-  min-width: 60%; 
+  min-width: 60%;
 }
 
 .project-sidebar {
@@ -518,9 +577,12 @@ ul {
   margin-bottom: 1rem;
 }
 
-
-.project-author-card, .project-meta-card {
-  
+.project-author-card,
+.project-meta-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
 }
 
 .project-author-card {
@@ -546,10 +608,10 @@ ul {
 }
 
 .project-author-card .author-bio {
-    font-size: 0.9rem;
-    font-style: italic;
-    opacity: 0.9;
-    margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
 }
 
 .btn-fullwidth {
@@ -572,8 +634,40 @@ ul {
   display: flex;
   justify-content: space-between;
 }
-.project-meta-list li strong {
-    color: var(--color-text);
-    opacity: 0.8;
 
+.project-meta-list li strong {
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+/* Success Animation for Post Button */
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+    background-color: var(--color-primary);
+  }
+
+  50% {
+    transform: scale(1.05);
+    background-color: #22c55e;
+    border-color: #22c55e;
+    color: white;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #22c55e;
+    border-color: #22c55e;
+    color: white;
+  }
+}
+
+.btn-success-animate {
+  animation: successPulse 0.4s ease-out forwards;
+}
+
+.btn-success-state {
+  background-color: #22c55e !important;
+  border-color: #22c55e !important;
+  color: white !important;
 }
