@@ -43,6 +43,3 @@ Dev Cloud is a modern web application designed to connect developers, students, 
 3. **Login**: Enter any username/password to access the dashboard.
 4. **Explore**: Toggle themes, browse projects, and check out the messaging system.
 
----
-
-*Built with ❤️ for the developer community.*
